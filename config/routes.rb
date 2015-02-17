@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :models
-  root to: "users#index"
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions"}
+  get '/games/:id', to: 'game#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
