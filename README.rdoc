@@ -1,28 +1,51 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is where the API docs will lie from here on out unless we decide to change
+to somewhere else, but here goes:
+our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
-Things you may want to cover:
+==CREATE USER
+`STATUS 201 CREATED`
+from
+`POST [domain]/users`
+data:
+`
+"user": {
+  "email": "macho_man_alan_matthews@gmail.com",
+  "password": "nachooooescheese"
+}
+`
 
-* Ruby version
+sample response:
+`
+{
+    "user": {
+        "email": "macho_man_alan_matthews@gmail.com",
+        "authentication_token": "GhBPRwKabKQX2wLzwU56"
+    }
+}
+`
 
-* System dependencies
+==USER SIGN IN
+`STATUS 200 OK`
+from
+`POST [domain]/users/sign_in`
+data:
+`
+"user": {
+  "email": "macho_man_alan_matthews@gmail.com",
+  "password": "nachooooescheese",
+  "token_auth": "GhBPRwKabKQX2wLzwU5"
+}
+`
+sample response:
+`
+{
+    "user": {
+        "email": "macho_man_alan_matthews@gmail.com",
+        "authentication_token": "GhBPRwKabKQX2wLzwU56"
+    }
+}
+`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+cool deal.
