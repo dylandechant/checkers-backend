@@ -5,47 +5,47 @@ to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
 ==CREATE USER
-`STATUS 201 CREATED`
+<code>STATUS 201 CREATED</code>
 from
-`POST [domain]/users`
+<code>POST [domain]/users</code>
 data:
-`
+<code>
 "user": {
   "email": "macho_man_alan_matthews@gmail.com",
   "password": "nachooooescheese"
 }
-`
+</code>
 
 sample response:
-`
+<code>
 {
     "user": {
         "email": "macho_man_alan_matthews@gmail.com",
         "authentication_token": "GhBPRwKabKQX2wLzwU56"
     }
 }
-`
+</code>
 
 ==USER SIGN IN
-`STATUS 200 OK`
+<code>STATUS 200 OK`
 from
-`POST [domain]/users/sign_in`
+<code>POST [domain]/users/sign_in`
 data:
-`
+<code>
 "user": {
   "email": "macho_man_alan_matthews@gmail.com",
   "password": "nachooooescheese",
   "token_auth": "GhBPRwKabKQX2wLzwU5"
 }
-`
+</code>
 sample response:
-`
+<code>
 {
     "user": {
         "email": "macho_man_alan_matthews@gmail.com",
         "authentication_token": "GhBPRwKabKQX2wLzwU56"
     }
 }
-`
+</code>
 
 cool deal.
