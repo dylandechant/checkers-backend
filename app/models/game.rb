@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
 
 
   def self.waiting
-    Game.where(:players_count => 1)
+    Game.where(:player_count => 1)
   end
 
   def self.active
