@@ -30,9 +30,9 @@ sample response:
 </code>
 
 ==USER SIGN IN
-<code>STATUS 200 OK`
+<code>STATUS 200 OK</code>
 from
-<code>POST [domain]/users/sign_in`
+<code>POST [domain]/users/sign_in</code>
 data:
 <code>
 "user": {
