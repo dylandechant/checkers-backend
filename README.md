@@ -1,10 +1,12 @@
-== README
+README
+======
 
 This is where the API docs will lie from here on out unless we decide to change
 to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
-==CREATE USER
+CREATE USER
+===========
 `STATUS 201 CREATED`
 from
 `POST [domain]/users`
@@ -27,7 +29,8 @@ sample response:
 }
 ```
 
-==USER SIGN IN
+USER SIGN IN
+============
 `STATUS 200 OK`
 from
 `POST [domain]/users/sign_in`
