@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   has_many :users, through: :players
   before_create :set_board
 
+  validates_length_of :users, maximum: 2, message: "can only have two players"
+
   serialize :board
 
   BOARD = [[1, 0, 1, 0, 1, 0, 1, 0],
@@ -13,6 +15,15 @@ class Game < ActiveRecord::Base
            [0, 2, 0, 2, 0, 2, 0, 2],
            [2, 0, 2, 0, 2, 0, 2, 0],
            [0, 2, 0, 2, 0, 2, 0, 2]]
+
+
+  def self.waiting
+    Game.where(:players_count => 1)
+  end
+
+  def self.active
+    Game.where(:finished => false)
+  end
 
   private
     def set_board
