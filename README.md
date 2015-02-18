@@ -8,18 +8,6 @@ our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
 FINISHED
 ===========
-CREATE GAME
------------
-`STATUS 201 CREATED`
-from
-`POST [domain]/games/create`
-
-JOIN GAME
----------
-`STATUS [IN PROGRESS]`
-from
-`POST [domain]/games/join`
-
 
 CREATE USER
 -----------
