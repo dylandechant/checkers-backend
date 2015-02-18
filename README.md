@@ -5,6 +5,24 @@ This is where the API docs will lie from here on out unless we decide to change
 to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
+
+IN PROGRESS
+===========
+CREATE GAME
+-----------
+`STATUS 201 CREATED`
+from
+`POST [domain]/games/create`
+
+JOIN GAME
+---------
+`STATUS [IN PROGRESS]`
+from
+`POST [domain]/games/join`
+
+
+FINISHED
+========
 CREATE USER
 -----------
 `STATUS 201 CREATED`
