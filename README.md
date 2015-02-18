@@ -6,7 +6,7 @@ to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
 
-IN PROGRESS
+FINISHED
 ===========
 CREATE GAME
 -----------
@@ -21,8 +21,6 @@ from
 `POST [domain]/games/join`
 
 
-FINISHED
-========
 CREATE USER
 -----------
 `STATUS 201 CREATED`
@@ -67,6 +65,226 @@ sample response:
     "user": {
         "email": "macho_man_alan_matthews@gmail.com",
         "authentication_token": "GhBPRwKabKQX2wLzwU56"
+    }
+}
+```
+CREATE GAMES
+------------
+`STATUS 201 CREATED`
+from
+`POST [domain]/games/create`
+
+data:
+```
+{
+    "game": {
+        "auth_token": "GhBPRwKabKQX2wLzwU56"
+    }
+}
+```
+sample response:
+```
+{
+    "game": {
+        "id": 2,
+        "board": [
+            [
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+            ],
+            [
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ],
+            [
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ]
+        ],
+        "turn": null,
+        "winner": null,
+        "loser": null,
+        "finished": false,
+        "players_count": null
+    }
+}
+
+JOIN GAMES
+----------
+`STATUS 200 OK`
+from
+`POST [domain]/games/join`
+
+data:
+```
+{
+    "game": {
+        "auth_token": "GhBPRwKabKQX2wLzwU56"
+    }
+}
+
+```
+sample response:
+```
+
+{
+    "game": {
+        "id": 3,
+        "board": [
+            [
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+            ],
+            [
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ],
+            [
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ]
+        ],
+        "turn": null,
+        "winner": null,
+        "loser": null,
+        "finished": false,
+        "players_count": null
     }
 }
 ```
