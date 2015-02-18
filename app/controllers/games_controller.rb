@@ -1,6 +1,5 @@
 class GamesControllers < ApplicationController
-  before_action :authenticate_user!, only: => [:join, :create]
-  before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!, :only => [:join, :create]
 
   def show
     @game = Game.find(params[:id])
