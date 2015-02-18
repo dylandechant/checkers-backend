@@ -1,5 +1,7 @@
-class GamesControllers < ApplicationController
-  before_action :authenticate_user_from_token!, :only => [:join, :create]
+
+class GamesController < ApplicationController
+  
+  before_action :authenticate_user_from_token! , :only => [:join, :create]
 
   def show
     @game = Game.find(params[:id])
@@ -7,27 +9,33 @@ class GamesControllers < ApplicationController
   end
 
   def join
+    binding.pry
     @waiting = Game.waiting.first
     if @waiting 
-      @game = @waiting.users << current_user
-      render json:{:game => @game}, status: :ok
+      @waiting.users << current_user
+      render json: { :game => @waiting }, status: :ok
     else
       
-      @game = Game.create(player1_id: params[:id])
+      @game = Game.create
+      binding.pry
+      @game.users = [current_user]
+      render json: { :game => @game }, status: :ok
     end
   end
 
 
 
   def create
-    @game = Game.create(game_params)
-    render json: {}, status: :created
+    @game = Game.create
+    binding.pry
+    @game.users = [current_user.id]
+    render json: { :game => @game }, status: :created
   end
 
 
 private
-  def game_params
-    require(:game).permit(:board, :player_id)
-  end
+  # def user_params
+  #   params.require(:user).permit(:id)
+  # end
 end
 
