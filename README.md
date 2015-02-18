@@ -164,7 +164,7 @@ sample response:
         "players_count": null
     }
 }
-
+```
 JOIN GAMES
 ----------
 `STATUS 200 OK`
