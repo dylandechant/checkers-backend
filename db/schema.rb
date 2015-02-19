@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218220447) do
+ActiveRecord::Schema.define(version: 20150219222712) do
 
   create_table "games", force: :cascade do |t|
     t.text    "board"
