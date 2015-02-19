@@ -41,8 +41,8 @@ from
 
 data:
 ```
-"user": {
-  "token_auth": "GhBPRwKabKQX2wLzwU5"
+{
+  "auth_token": "GhBPRwKabKQX2wLzwU5"
 }
 ```
 sample response:
