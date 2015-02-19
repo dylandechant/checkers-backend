@@ -25,6 +25,44 @@ class Game < ActiveRecord::Base
     Game.where(:finished => false)
   end
 
+  def valid_move?(move)
+    binding.pry
+    valid = false
+    move = JSON.parse(move)
+    if move.length == 2
+      valid = single_move(move)
+    end
+
+    binding.pry
+    valid
+  end
+
+  def single_move(move)
+    player_piece = set_piece
+    if self.board[move[0][0]][move[0][1]] != player_piece #are they moving their own piece? no? return false
+      binding.pry
+      return false
+    else                                                  #they are moving their own piece
+      binding.pry
+      if self.board[move[1][0]][move[1][1]] = 0          #are they moving to an empty space?
+        self.board[move[0][0]][move[0][1]] = 0           #they are? great, write to the board, advance turn
+        self.board[move[1][0]][move[1][1]] = 1
+        self.turn += 1
+        self.save
+        binding.pry
+        return true
+      end
+    end
+  end
+
+  def set_piece
+    if self.turn.odd?
+      return 1
+    else
+      return 2
+    end
+  end
+
   private
     def set_board
       self.board = BOARD
