@@ -24,6 +24,7 @@ class Game < ActiveRecord::Base
   def self.active
     Game.where(:finished => false)
   end
+  #[[0,0],[1,1]]
 
   def valid_move?(move)
     binding.pry
@@ -39,14 +40,13 @@ class Game < ActiveRecord::Base
 
   def single_move(move)
     player_piece = set_piece
-    if self.board[move[0][0]][move[0][1]] != player_piece #are they moving their own piece? no? return false
+    if self.board[move[0][0]][move[0][1]] != player_piece # are they moving their own piece? no? return false
       binding.pry
       return false
-    else                                                  #they are moving their own piece
-      binding.pry
-      if self.board[move[1][0]][move[1][1]] = 0          #are they moving to an empty space?
-        self.board[move[0][0]][move[0][1]] = 0           #they are? great, write to the board, advance turn
-        self.board[move[1][0]][move[1][1]] = 1
+    else                                                  # they are moving their own piece
+      if self.board[move[1][0]][move[1][1]] = 0           # are they moving to an empty space?
+        self.board[move[0][0]][move[0][1]] = 0            # they are? great, write to the board, advance turn
+        self.board[move[1][0]][move[1][1]] = player_piece
         self.turn += 1
         self.save
         binding.pry
