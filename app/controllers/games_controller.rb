@@ -9,7 +9,6 @@ class GamesController < ApplicationController
   end
 
   def join
-    binding.pry
     @waiting = Game.waiting.first
     if @waiting 
       @waiting.users << current_user
