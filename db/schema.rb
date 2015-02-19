@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219221923) do
+ActiveRecord::Schema.define(version: 20150219222712) do
 
   create_table "games", force: :cascade do |t|
     t.text    "board"
     t.integer "turn"
     t.integer "winner"
     t.integer "loser"
-    t.boolean "finished", default: false
+    t.boolean "finished",      default: false
+    t.integer "players_count"
   end
 
   create_table "players", force: :cascade do |t|
@@ -42,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150219221923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "authentication_token"
-    t.integer  "players_count"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
