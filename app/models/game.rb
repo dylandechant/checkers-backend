@@ -18,10 +18,7 @@ class Game < ActiveRecord::Base
 
 
   def self.waiting
-    Game.select("games.*, count(players.id) as players_count")
-      .joins(:players)
-      .group("players.game_id")
-      .having("players_count = 1")
+    Game.where(:players_count => 1)
   end
 
   def self.active
