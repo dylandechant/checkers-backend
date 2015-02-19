@@ -42,8 +42,6 @@ from
 data:
 ```
 "user": {
-  "email": "macho_man_alan_matthews@gmail.com",
-  "password": "nachooooescheese",
   "token_auth": "GhBPRwKabKQX2wLzwU5"
 }
 ```
