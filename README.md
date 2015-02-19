@@ -42,7 +42,10 @@ from
 data:
 ```
 {
-  "auth_token": "GhBPRwKabKQX2wLzwU5"
+  "user": {
+    "email": "macho_man_alan_matthews@gmail.com",
+    "password": "nachooooescheese"
+  }
 }
 ```
 sample response:
