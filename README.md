@@ -66,9 +66,8 @@ from
 data:
 ```
 {
-    "game": {
-        "auth_token": "GhBPRwKabKQX2wLzwU56"
-    }
+  "auth_token": "GhBPRwKabKQX2wLzwU56"
+    
 }
 ```
 sample response:
