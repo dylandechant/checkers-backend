@@ -79,4 +79,4 @@ token1 = get_auth_token("player 1")
 token2 = get_auth_token("player 2")
 game_id = prompt_user("What is the ID of the game to play?", /^\d+$/, "C'mon. Gimme a valid ID.")
 
-play_game(CheckersUser.new(token1, game_id), CheckersUser.new(token2, game_id))
+play_game(CheckersUser.new(token1, game_id), CheckersUser.new(token2, game_id), game_id)
