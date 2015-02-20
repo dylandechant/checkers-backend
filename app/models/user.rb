@@ -6,23 +6,20 @@ class User < ActiveRecord::Base
   has_many :players
   has_many :games, through: :players
 
-before_save :ensure_authentication_token
+  before_save :ensure_authentication_token
 
-def ensure_authentication_token
+  def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
   end
 
   def as_json(opts={})
-<<<<<<< HEAD
     options = {:only => [:email, :authentication_token]}
     options.merge!(opts)
     super(options)
-=======
-    defaults = { :only => [:email, :authentication_token] }
-    super(defaults.merge(opts))
->>>>>>> origin/master
+    # defaults = { :only => [:email, :authentication_token] }
+    # super(defaults.merge(opts))
   end
 
   private
