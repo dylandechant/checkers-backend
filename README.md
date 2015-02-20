@@ -5,17 +5,6 @@ This is where the API docs will lie from here on out unless we decide to change
 to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
-This is what the board will look like, it will be served as json though
-```
-  BOARD = [[1, 0, 1, 0, 1, 0, 1, 0],
-           [0, 1, 0, 1, 0, 1, 0, 1],
-           [1, 0, 1, 0, 1, 0 ,1, 0],
-           [0, 0, 0, 0, 0, 0, 0, 0],
-           [0, 0, 0, 0, 0, 0, 0, 0],
-           [0, 2, 0, 2, 0, 2, 0, 2],
-           [2, 0, 2, 0, 2, 0, 2, 0],
-           [0, 2, 0, 2, 0, 2, 0, 2]]
-```
 
 FINISHED
 ===========
@@ -289,3 +278,128 @@ sample response:
 ```
 
 cool deal.
+
+MOVE
+----
+`STATUS  202 Accepted`
+from
+`Post [Domain]/games/:id`
+
+data:
+```
+{
+  "auth_token": "GhBPRwKabKQX2wLzwU56"
+  "move" :[
+  [
+      4,
+      0
+  ]
+  
+  [
+      5,
+      1
+   ]
+  
+ ]
+
+}
+```
+Sample Response
+```
+{
+    "game": {
+        "turn": 1,
+        "board": [
+            [
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+            ],
+            [
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ],
+            [
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0
+            ],
+            [
+                0,
+                2,
+                0,
+                2,
+                0,
+                2,
+                0,
+                2
+            ]
+        ],
+        "id": 24,
+        "winner": null,
+        "loser": null,
+        "finished": false,
+        "players_count": 1
+    },
+    "users": [
+        {
+            "email": "d@d.com",
+        }
+    ]
+}
