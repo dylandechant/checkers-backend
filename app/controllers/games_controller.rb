@@ -1,6 +1,8 @@
 
 class GamesController < ApplicationController
+
   before_action :authenticate_user_from_token! , :only => [:join, :create, :move]
+
 
   def show
     @game = Game.find(params[:id])
@@ -11,7 +13,7 @@ class GamesController < ApplicationController
 
   def join
     @waiting = Game.waiting.first
-    if @waiting 
+    if @waiting
       @waiting.users << current_user
       render json: { :game => @waiting, :users => @waiting.users }
       # render json: :game => @waiting, :include => { :users => { :only => :email } }, status: :ok
@@ -41,10 +43,8 @@ class GamesController < ApplicationController
 
   end
 
-
 private
   def set_game
     @game = Game.find(params[:id])
   end
 end
-

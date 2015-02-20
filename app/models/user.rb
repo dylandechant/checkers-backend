@@ -15,8 +15,14 @@ def ensure_authentication_token
   end
 
   def as_json(opts={})
+<<<<<<< HEAD
+    options = {:only => [:email, :authentication_token]}
+    options.merge!(opts)
+    super(options)
+=======
     defaults = { :only => [:email, :authentication_token] }
     super(defaults.merge(opts))
+>>>>>>> origin/master
   end
 
   private

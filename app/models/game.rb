@@ -6,6 +6,7 @@ class Game < ActiveRecord::Base
   validates_length_of :users, maximum: 2, message: "can only have two players"
 
   serialize :board
+  
 
   BOARD = [[1, 0, 1, 0, 1, 0, 1, 0],
            [0, 1, 0, 1, 0, 1, 0, 1],
