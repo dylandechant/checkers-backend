@@ -24,12 +24,10 @@ class Game < ActiveRecord::Base
   def self.active
     Game.where(:finished => false)
   end
-  #[[0,0],[1,1]]
 
   def valid_move?(move)
     binding.pry
     valid = false
-    move = JSON.parse(move)
     if move.length == 2
       valid = single_move(move)
     end
@@ -37,10 +35,12 @@ class Game < ActiveRecord::Base
     binding.pry
     valid
   end
-
+#[[x,x],[x,x]]
   def single_move(move)
     player_piece = set_piece
-    if self.board[move[0][0]][move[0][1]] != player_piece # are they moving their own piece? no? return false
+    dir = game_var
+    binding.pry
+    if (self.board[move[0][0]][move[0][1]] != player_piece)
       binding.pry
       return false
     else                                                  # they are moving their own piece
@@ -52,6 +52,14 @@ class Game < ActiveRecord::Base
         binding.pry
         return true
       end
+    end
+  end
+
+  def game_var
+    if self.turn.odd?
+      return 1
+    else
+      return -1
     end
   end
 

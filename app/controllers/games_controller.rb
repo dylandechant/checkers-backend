@@ -30,7 +30,8 @@ class GamesController < ApplicationController
   def move
     binding.pry
     @game = set_game
-    if @game.valid_move?(params[:move])
+    move = JSON.parse(params[:move])
+    if @game.valid_move?(move)
       render json: { :game => @game }, status: :accepted
     else
       render json: { :error => "something went wrong" }, status: :not_modified
