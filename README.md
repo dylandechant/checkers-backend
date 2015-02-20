@@ -283,7 +283,7 @@ MOVE
 ----
 `STATUS  202 Accepted`
 from
-`Post [Domain]/games/:id`
+`PUT [domain]/games/:id`
 
 data:
 ```
@@ -403,3 +403,36 @@ Sample Response
         }
     ]
 }
+```
+
+LEADERBOARD
+----
+`STATUS  200 OK`
+from
+`GET [domain]/leaderboard`
+
+data:
+```
+{
+  "leaderboard": " "
+    
+}
+```
+Sample Response
+```
+{
+    "users": [
+        {
+            "email": "test@test.com",
+            "wins": null,
+            "losses": null
+        },
+        {
+            "email": "bat@man.com",
+            "wins": null,
+            "losses": null
+        }
+    ]
+}
+```
+
