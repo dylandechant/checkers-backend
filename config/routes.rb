@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   post '/games/join', to: 'games#join'
   put '/games/:id', to: 'games#move'
   get '/leaderboard', to: 'leaderboards#index'
-  post '/games/:id', to: 'games#move'
-
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
