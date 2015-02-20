@@ -70,8 +70,13 @@ def play_game(player1, player2, game_id)
   end
 end
 
-#p1 = CheckersUser.new('token_for_1', game_id)
-#p2 = CheckersUser.new('token_for_2', game_id)
-#play_game(p1, p2)
+def get_auth_token(user)
+  prompt_user("What is the auth token for #{user}?", /^[0-9a-zA-Z\-_]{20}$/,
+    "Please give me a real hash asshole.")
+end
 
-binding.pry
+token1 = get_auth_token("player 1")
+token2 = get_auth_token("player 2")
+game_id = prompt_user("What is the ID of the game to play?", /^\d+$/, "C'mon. Gimme a valid ID.")
+
+play_game(CheckersUser.new(token1, game_id), CheckersUser.new(token2, game_id))
