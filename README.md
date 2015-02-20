@@ -5,6 +5,17 @@ This is where the API docs will lie from here on out unless we decide to change
 to somewhere else, but here goes:
 our url for now is here: `https://warm-spire-6158.herokuapp.com`
 
+This is what the board will look like, it will be served as json though
+```
+  BOARD = [[1, 0, 1, 0, 1, 0, 1, 0],
+           [0, 1, 0, 1, 0, 1, 0, 1],
+           [1, 0, 1, 0, 1, 0 ,1, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 2, 0, 2, 0, 2, 0, 2],
+           [2, 0, 2, 0, 2, 0, 2, 0],
+           [0, 2, 0, 2, 0, 2, 0, 2]]
+```
 
 FINISHED
 ===========
@@ -66,9 +77,8 @@ from
 data:
 ```
 {
-    "game": {
-        "auth_token": "GhBPRwKabKQX2wLzwU56"
-    }
+  "auth_token": "GhBPRwKabKQX2wLzwU56"
+    
 }
 ```
 sample response:
