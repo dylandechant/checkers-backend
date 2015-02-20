@@ -6,21 +6,21 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    render json: { :game => @game , :users => @game.users }
+    render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
     # render json: :game => @game, :include => { :users }, status: :ok
 
   end
 
   def join
-    @waiting = Game.waiting.first
+    @waiting = Game.waiting(current_user).first
     if @waiting
       @waiting.users << current_user
-      render json: { :game => @waiting, :users => @waiting.users }
+      render json: {:game => @waiting, :users => @waiting.users.as_json(:only => [:email])}, status: :ok
       # render json: :game => @waiting, :include => { :users => { :only => :email } }, status: :ok
     else
       @game = Game.create
       @game.users = [current_user]
-      render json: { :game => @game, :users => @game.users }
+      render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
       # render json: :game => @game, :include => { :users => { :only => :email } }, status: :ok
     end
   end
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.create
     @game.users = [current_user]
-    render json: { :game => @game,  :users => @game.users }
+    render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
     # render json: :game => @game, :include => { :users => { :only => :email } }, status: :created
   end
 
@@ -36,7 +36,7 @@ class GamesController < ApplicationController
     @game = set_game
     move = JSON.parse(params[:move])
     if @game.valid_move?(move)
-      render json: { :game => @game, :users => @game.users }, status: :accepted
+      render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
     else
       render json: { :error => "something went wrong" }, status: :not_modified
     end
