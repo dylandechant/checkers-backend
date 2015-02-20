@@ -403,6 +403,7 @@ Sample Response
         }
     ]
 }
+```
 
 LEADERBOARD
 ----
