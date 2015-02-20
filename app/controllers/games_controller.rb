@@ -13,7 +13,7 @@ class GamesController < ApplicationController
     @waiting = Game.waiting.first
     if @waiting 
       @waiting.users << current_user
-      render json: { :game => @waiting, :users => @game.users }
+      render json: { :game => @waiting, :users => @waiting.users }
       # render json: :game => @waiting, :include => { :users => { :only => :email } }, status: :ok
     else
       @game = Game.create
