@@ -28,7 +28,6 @@ class GamesController < ApplicationController
   end
 
   def move
-    binding.pry
     @game = set_game
     move = JSON.parse(params[:move])
     if @game.valid_move?(move)
