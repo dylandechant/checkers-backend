@@ -34,7 +34,7 @@ class GamesController < ApplicationController
     @game = set_game
     move = JSON.parse(params[:move])
     if @game.valid_move?(move)
-      render json: { :game => @game }, status: :accepted
+      render json: { :game => @game, :users => @game.users }, status: :accepted
     else
       render json: { :error => "something went wrong" }, status: :not_modified
     end
