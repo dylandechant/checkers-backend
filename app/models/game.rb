@@ -40,7 +40,6 @@ class Game < ActiveRecord::Base
 
     current_position = move[0]
     future_position = move[1]
-    binding.pry
     if (self.board[current_position[0]][current_position[1]] != player_piece)
       return false
     else                                                  # they are moving their own piece
