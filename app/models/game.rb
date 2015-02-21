@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
   validates_length_of :users, maximum: 2, message: "can only have two players"
 
   serialize :board
-  
+
 
   BOARD = [[1, 0, 1, 0, 1, 0, 1, 0],
            [0, 1, 0, 1, 0, 1, 0, 1],
@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
 
 
   def self.waiting(user)
-    Game.includes(:users).where(:players_count => 1).where("users.id != ?", user.id)
+    Game.includes(:users).where(:players_count => 1).where("id != ?", user.id)
   end
 
   def self.active
