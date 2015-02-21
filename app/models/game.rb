@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
 
 
   def self.waiting(user)
-    Game.includes(:users).where(:players_count => 1).where("id != ?", user.id)
+    Game.joins(:users).where(players_count: 1).where("users.id != #{user.id}")
   end
 
   def self.active

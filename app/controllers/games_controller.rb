@@ -12,7 +12,9 @@ class GamesController < ApplicationController
   end
 
   def join
-    @waiting = Game.waiting(current_user).first
+    if Game.waiting(current_user).first
+      @waiting = Game.waiting(current_user).first
+    end
     if @waiting
       @waiting.users << current_user
       render json: {:game => @waiting, :users => @waiting.users.as_json(:only => [:email])}, status: :ok
