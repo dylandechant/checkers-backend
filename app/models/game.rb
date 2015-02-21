@@ -40,11 +40,11 @@ class Game < ActiveRecord::Base
 
     current_position = move[0]
     future_position = move[1]
-
+    binding.pry
     if (self.board[current_position[0]][current_position[1]] != player_piece)
       return false
     else                                                  # they are moving their own piece
-      if self.board[future_position[0]][future_position[1]] = 0           # are they moving to an empty space?
+      if self.board[future_position[0]][future_position[1]] == 0           # are they moving to an empty space?
         # if ((future_position[0] - current_position[0] == dir) && (future_position[1] - current_position[1] == dir)) || (future_position[0] - current_position[0] == -1) && (future_position[1] - current_position[1] == -1)
           self.board[current_position[0]][current_position[1]] = 0            # they are? great, write to the board, advance turn
           self.board[future_position[0]][future_position[1]] = player_piece
