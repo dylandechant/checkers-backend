@@ -41,7 +41,6 @@ class Game < ActiveRecord::Base
     player_piece = set_piece
     dir = game_var
 
-
     current_position = move[0]
     future_position = move[1]
 
@@ -91,7 +90,6 @@ class Game < ActiveRecord::Base
     self.turn += 1
     self.save
   end
-
 
   def game_var
     if self.turn.even?
