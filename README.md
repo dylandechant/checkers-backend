@@ -289,19 +289,7 @@ data:
 ```
 {
   "auth_token": "GhBPRwKabKQX2wLzwU56"
-  "move" :[
-  [
-      4,
-      0
-  ]
-  
-  [
-      5,
-      1
-   ]
-  
- ]
-
+  "move" : "[[4,0],[5,1]]"
 }
 ```
 Sample Response
