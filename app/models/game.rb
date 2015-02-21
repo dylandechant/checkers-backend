@@ -16,6 +16,8 @@ class Game < ActiveRecord::Base
            [0, 2, 0, 2, 0, 2, 0, 2],
            [2, 0, 2, 0, 2, 0, 2, 0],
            [0, 2, 0, 2, 0, 2, 0, 2]]
+  X = 0
+  Y = 1
 
 
   def self.waiting(user)
@@ -35,25 +37,61 @@ class Game < ActiveRecord::Base
   end
 #[[x,x],[x,x]]
   def single_move(move)
+
     player_piece = set_piece
     dir = game_var
 
+
     current_position = move[0]
     future_position = move[1]
-    if (self.board[current_position[0]][current_position[1]] != player_piece)
+
+    if open_move?(future_position) && players_piece?(current_position) && x_valid?(current_position, future_position, dir) && y_valid?(current_position, future_position, dir)
+      write_board(current_position, future_position, player_piece)
+    else
       return false
-    else                                                  # they are moving their own piece
-      if self.board[future_position[0]][future_position[1]] == 0           # are they moving to an empty space?
-        # if ((future_position[0] - current_position[0] == dir) && (future_position[1] - current_position[1] == dir)) || (future_position[0] - current_position[0] == -1) && (future_position[1] - current_position[1] == -1)
-          self.board[current_position[0]][current_position[1]] = 0            # they are? great, write to the board, advance turn
-          self.board[future_position[0]][future_position[1]] = player_piece
-          self.turn += 1
-          self.save
-          return true
-        # end
-      end
     end
   end
+
+  def open_move?(spot)
+    if self.board[spot[X]][spot[Y]] == 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def players_piece?(spot)
+    player_piece = set_piece
+    if self.board[spot[X]][spot[Y]] == player_piece
+      return true
+    else
+      return false
+    end
+  end
+
+  def x_valid?(start, finish, dir)  # set dir
+    if finish[X] == start[X] + dir
+      return true
+    else
+      return false
+    end
+  end
+
+  def y_valid?(start, finish, dir)
+    if (finish[Y] == start[Y] + 1) || (finish[Y] == start[Y] - 1)
+      return true
+    else
+      return false
+    end
+  end
+
+  def write_board(start, finish, player_piece)
+    self.board[start[X]][start[Y]] = 0
+    self.board[finish[X]][finish[Y]] = player_piece
+    self.turn += 1
+    self.save
+  end
+
 
   def game_var
     if self.turn.even?
