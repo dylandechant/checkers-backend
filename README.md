@@ -9,6 +9,116 @@ our url for now is here: `https://warm-spire-6158.herokuapp.com`
 FINISHED
 ===========
 
+GET A USERS GAMES
+-----------------
+`STATUS 200 OK`
+from
+`GET [domain]/USERS/:user_id`
+
+data:
+` GET [domain]/users/2`
+
+sample response:
+```
+{
+    "user": {
+        "email": "b@b.com"
+    },
+    "game": [
+        {
+            "id": 1,
+            "board": [
+                [
+                    1,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    2,
+                    0,
+                    2,
+                    0,
+                    2,
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    0,
+                    2,
+                    0,
+                    2,
+                    0,
+                    2,
+                    0
+                ],
+                [
+                    0,
+                    2,
+                    0,
+                    2,
+                    0,
+                    2,
+                    0,
+                    2
+                ]
+            ],
+            "turn": 1,
+            "winner": null,
+            "loser": null,
+            "finished": false,
+            "players_count": 1
+        }
+    ]
+}
+```
+
 CREATE USER
 -----------
 `STATUS 201 CREATED`
