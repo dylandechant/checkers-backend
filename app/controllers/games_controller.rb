@@ -40,7 +40,7 @@ class GamesController < ApplicationController
     if @game.valid_move?(move)
       render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
     else
-      render json: { :error => "something went wrong" }, status: :not_modified
+      render json: { :error => "Unauthorized move" }, status: :unauthorized
     end
 
   end
