@@ -116,6 +116,7 @@ class Game < ActiveRecord::Base
     self.board[start[X]][start[Y]] = 0
     self.board[finish[X]][finish[Y]] = player_piece
     self.turn += 1
+    set_user_turn
     self.save
   end
 
@@ -143,8 +144,22 @@ class Game < ActiveRecord::Base
     end
   end
 
-  # private
+  private
     def set_board
       self.board = BOARD
+    end
+
+    def set_user_turn
+      if self.users.length > 0
+        if self.turn.even?
+          self.user_turn = self.users.first.email
+        else
+          if self.users.first != self.users.last
+            self.user_turn = self.users.last.email
+          else
+            self.user_turn = nil
+          end
+        end
+      end
     end
 end
