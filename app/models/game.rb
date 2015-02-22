@@ -29,23 +29,64 @@ class Game < ActiveRecord::Base
   end
 
   def valid_move?(move)
+    start = move[0]
+    finish = move[1]
+
     valid = false
+
     if move.length == 2
-      valid = single_move(move)
+      if (start[Y]-finish[Y] > 1) || (start[Y]-finish[Y] < -1) # jump move?
+        valid = jump(move)
+      else
+        valid = single_move(move)
+      end     
     end
     valid
   end
-#[[x,x],[x,x]]
+
+  def jump(move)
+    player_piece = set_piece
+    dir = game_var
+
+    start = move[0]
+    finish = move[1]
+
+    if open_move?(finish) && players_piece?(start) && take_piece?(start, finish, player_piece)
+      return true
+    else
+      return false
+    end
+  end
+
+  def take_piece?(start, finish, player_piece)
+    op = set_opponent
+    dir = game_var
+    if (start[Y]+2 == finish[Y]) || (start[Y]-2 == finish[Y]) # validity of jump
+      if start[Y] < finish[Y] #going right
+        if (self.board[start[X]+dir][start[Y]+1] != player_piece) || (self.board[start[X]+dir][start[Y]+1] != 0)
+          self.board[start[X]+dir][start[Y]+1] = 0
+          write_board(start, finish, player_piece)
+          return true
+        elsif (self.board[start[X]+dir][start[Y]-1] != player_piece) || (self.board[start[X]+dir][start[Y]-1] != 0) #going left
+          self.board[start[X]+dir][start[Y]-1] = 0
+          write_board(start, finish, player_piece)
+          return true
+        end
+      end
+    end
+  end
+
+
   def single_move(move)
 
     player_piece = set_piece
     dir = game_var
 
-    current_position = move[0]
-    future_position = move[1]
+    start = move[0]
+    finish = move[1]
 
-    if open_move?(future_position) && players_piece?(current_position) && x_valid?(current_position, future_position, dir) && y_valid?(current_position, future_position, dir)
-      write_board(current_position, future_position, player_piece)
+    if open_move?(finish) && players_piece?(start) && x_valid?(start, finish, dir) && y_valid?(start, finish, dir)
+      write_board(start, finish, player_piece)
     else
       return false
     end
@@ -105,6 +146,14 @@ class Game < ActiveRecord::Base
       return 1
     else
       return 2
+    end
+  end
+
+  def set_opponent
+    if self.turn.even?
+      return 2
+    else
+      return 1
     end
   end
 
