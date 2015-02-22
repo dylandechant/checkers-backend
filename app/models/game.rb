@@ -2,7 +2,6 @@ class Game < ActiveRecord::Base
   has_many :players
   has_many :users, through: :players
   before_create :set_board
-  before_update :set_user_turn
 
   validates_length_of :users, maximum: 2, message: "can only have two players"
 
@@ -30,7 +29,6 @@ class Game < ActiveRecord::Base
   end
 
   def valid_move?(move)
-    binding.pry
     valid = false
     if move.length == 2
       valid = single_move(move)
@@ -90,6 +88,7 @@ class Game < ActiveRecord::Base
     self.board[start[X]][start[Y]] = 0
     self.board[finish[X]][finish[Y]] = player_piece
     self.turn += 1
+    set_user_turn
     self.save
   end
 
@@ -115,13 +114,15 @@ class Game < ActiveRecord::Base
     end
 
     def set_user_turn
-      if self.turn.even?
-        self.user_turn = self.users.first.email
-      else
-        if self.users.last
-          self.user_turn = self.users.last.email
+      if self.users.length > 0
+        if self.turn.even?
+          self.user_turn = self.users.first.email
         else
-          self.user_turn = nil
+          if self.users.first != self.users.last
+            self.user_turn = self.users.last.email
+          else
+            self.user_turn = nil
+          end
         end
       end
     end
