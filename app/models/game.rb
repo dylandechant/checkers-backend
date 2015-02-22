@@ -36,7 +36,6 @@ class Game < ActiveRecord::Base
 
     if move.length == 2
       if (start[Y]-finish[Y] > 1) || (start[Y]-finish[Y] < -1) # jump move?
-        binding.pry
         valid = jump(move)
       else
         valid = single_move(move)
@@ -62,18 +61,15 @@ class Game < ActiveRecord::Base
   def take_piece?(start, finish, player_piece)
     op = set_opponent
     dir = game_var
-    binding.pry
     if (start[Y]+2 == finish[Y]) || (start[Y]-2 == finish[Y]) # validity of jump
       if start[Y] < finish[Y] #going right
         if (self.board[start[X]+dir][start[Y]+1] != player_piece) || (self.board[start[X]+dir][start[Y]+1] != 0)
           self.board[start[X]+dir][start[Y]+1] = 0
           write_board(start, finish, player_piece)
-          binding.pry
           return true
         elsif (self.board[start[X]+dir][start[Y]-1] != player_piece) || (self.board[start[X]+dir][start[Y]-1] != 0) #going left
           self.board[start[X]+dir][start[Y]-1] = 0
           write_board(start, finish, player_piece)
-          binding.pry
           return true
         end
       end
