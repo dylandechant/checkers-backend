@@ -26,7 +26,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create
+    @game = Game.create(:user_turn => current_user.email)
     @game.users = [current_user]
     render json: {:game => @game, :users => @game.users.as_json(:only => [:email])}, status: :ok
   end
