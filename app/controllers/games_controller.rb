@@ -17,6 +17,9 @@ class GamesController < ApplicationController
     end
     if @waiting
       @waiting.users << current_user
+      if @waiting.turn == 1
+        @waiting.update(:user_turn => current_user.email)
+      end
       render json: {:game => @waiting, :users => @waiting.users.as_json(:only => [:email])}, status: :ok
     else
       @game = Game.create

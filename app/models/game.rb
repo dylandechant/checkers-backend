@@ -88,8 +88,8 @@ class Game < ActiveRecord::Base
     self.board[start[X]][start[Y]] = 0
     self.board[finish[X]][finish[Y]] = player_piece
     self.turn += 1
-    set_user_turn
     self.save
+    set_user_turn
   end
 
   def game_var
