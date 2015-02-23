@@ -114,16 +114,29 @@ class Game < ActiveRecord::Base
     end
 
     def set_user_turn
-      if self.users.length > 0
-        if self.turn.even?
-          self.user_turn = self.users.first.email
+      if self.users.length == 2
+        if self.user_turn == self.users.first.email
+          self.user_turn = self.users.last.email
         else
-          if self.users.first != self.users.last
-            self.user_turn = self.users.last.email
-          else
-            self.user_turn = nil
-          end
+          self.user_turn = self.users.first.email
         end
+      else
+        self.user_turn = nil
       end
+      self.save
     end
+
+    # def set_user_turn
+    #   if self.users.length > 0
+    #     if self.turn.even?
+    #       self.user_turn = self.users.first.email
+    #     else
+    #       if self.users.first != self.users.last
+    #         self.user_turn = self.users.last.email
+    #       else
+    #         self.user_turn = nil
+    #       end
+    #     end
+    #   end
+    # end
 end
